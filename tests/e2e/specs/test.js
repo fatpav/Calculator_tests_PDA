@@ -53,18 +53,26 @@ describe('calculator', () => {
   })
 
   it('should ouput a large number', () => {
-    for (let i = 0; i < 22; i++) {
-      cy.get('#number6').click()
-    }
-    cy.get('.display').should('contain', '6.666666666666666e+21')
+    cy.get('#number7').click();
+    cy.get('#number8').click();
+    cy.get('#number9').click();
+    cy.get('#number5').click();
+    cy.get('#number8').click();
+    cy.get('#number8').click();
+    cy.get('#number9').click();
+    cy.get('#number9').click();
+    cy.get('#operator_multiply').click();
+    cy.get('#number9').click();
+    cy.get('#operator_equals').click();
+    cy.get('.display').should('contain', '710630091')
   })
 
-  it('should display infinite when divided by zero', () => {
-    cy.get('#number9').click()
+  it('should display Error when divided by zero', () => {
+    cy.get('#number7').click()
     cy.get('#operator_divide').click()
     cy.get('#number0').click()
     cy.get('#operator_equals').click()
-    cy.get('.display').should('contain', 'Infinity')
+    cy.get('.display').should('contain', 'Error')
   })
 
 })
